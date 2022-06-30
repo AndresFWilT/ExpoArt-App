@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 
 import api.com.cableado.IComunicacion;
 import api.com.cableado.IDivulgacion;
+import api.com.cableado.IOpinion;
 import api.com.cableado.IModerador;
 import api.com.utilidades.Cargador;
 
@@ -31,6 +32,14 @@ public class Expo implements IModerador {
 			JOptionPane.showMessageDialog(null, "no hay componentes");
 		}
 
+		// Para traer opinion
+		try {
+			Class cls = crg.getClase(IOpinion.class.getName());
+			IOpinion com = (IOpinion) cls.newInstance();
+			com.criticaInformacion();
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "no hay componentes");
+		}
 	}
 
 	public static void main(String[] args) {
