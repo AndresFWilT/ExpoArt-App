@@ -5,6 +5,7 @@ import javax.swing.JOptionPane;
 import api.com.cableado.IComunicacion;
 import api.com.cableado.IDivulgacion;
 import api.com.cableado.IOpinion;
+import api.com.cableado.IRegistro;
 import api.com.cableado.IModerador;
 import api.com.utilidades.Cargador;
 
@@ -37,6 +38,15 @@ public class Expo implements IModerador {
 			Class cls = crg.getClase(IOpinion.class.getName());
 			IOpinion com = (IOpinion) cls.newInstance();
 			com.criticaInformacion();
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "no hay componentes");
+		}
+
+		// Para traer registro
+		try {
+			Class cls = crg.getClase(IRegistro.class.getName());
+			IRegistro com = (IRegistro) cls.newInstance();
+			com.registrarInformacion();
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "no hay componentes");
 		}
