@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 
 import api.com.cableado.IComunicacion;
 import api.com.cableado.IDivulgacion;
+import api.com.cableado.IGestion;
 import api.com.cableado.IOpinion;
 import api.com.cableado.IRegistro;
 import api.com.cableado.IModerador;
@@ -50,6 +51,20 @@ public class Expo implements IModerador {
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "no hay componentes");
 		}
+		
+		// Para back-end
+			
+		Cargador crg2 = new Cargador("core");
+
+		// Para traer bases de datos
+		try {
+			Class cls = crg2.getClase(IGestion.class.getName());
+			IGestion com = (IGestion) cls.newInstance();
+			com.gestionarInformacion();
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "no hay componentes");
+		}
+
 	}
 
 	public static void main(String[] args) {
